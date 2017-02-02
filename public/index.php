@@ -3,6 +3,10 @@ require_once('../src/Session.php');
 require_once('../src/Tweet.php');
 require_once('../src/User.php');
 
+if(!$session->is_logged_in()) {
+	header("Location: login.php");
+}
+
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	if(!empty($_POST)) {
 		$tweet = new Tweet;

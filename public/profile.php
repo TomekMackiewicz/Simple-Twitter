@@ -5,6 +5,10 @@ require_once('../src/Comment.php');
 require_once('../src/Message.php');
 require_once('../src/User.php');
 
+if(!$session->is_logged_in()) {
+	header("Location: login.php");
+}
+
 $messagesReceived = Message::loadAllMessagesByReceiver($conn, $_SESSION['id']);
 $messagesSent = Message::loadAllMessagesBySender($conn, $_SESSION['id']);
 
